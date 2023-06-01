@@ -13,13 +13,47 @@
 
 import random
 
-letrasMin ="abcdefghijklmnopqrstuvwxyz"
-LetasMay= "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-numeros = "0123456789"
+def crear_cuenta():
+    usuarioslist = ["xabi", "alan", "juan", "pedro","roberto", "maria", "teresa", "veronica", "daniela", "carmen"]
+    for usuario in usuarioslist:
+        usuarios[usuario]=[]
 
-unir = f"{letrasMin}{LetasMay}{numeros}"
-longitud = 10
-extension = random.sample(unir,longitud)
-contrasena = "" .join(extension)
+def crear_password():
+    letrasMin ="abcdefghijklmnopqrstuvwxyz"
+    LetasMay= "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    numeros = "0123456789"
+    unir = f"{letrasMin}{LetasMay}{numeros}"
+    longitud = 10
+    extension = random.sample(unir,longitud)
+    contrasena = "" .join(extension)
+    return contrasena
 
-print(contrasena)
+
+def crear_fono(user):
+    print(f"A continuacion debe ingresar un fono para de 8 digitos numericos")
+    fono=int(input(f"ingresar fono asignado para {user}: "))
+    verificador_fono=str(fono)
+    if len(verificador_fono) == 8:
+        print("Fono registrado")
+        return fono
+    else:
+        print("!!Fono es demasiado Corto!!")
+        crear_fono(user)
+
+
+usuarios ={
+}
+crear_cuenta()
+
+print("Bienvenido al menu de usuarios")
+acceso=int(input("Presione 1 para ver listado de usuarios o presione 0 para generar contraseña e ingresar fono: "))
+if acceso ==1:
+    print(list(usuarios))
+elif acceso ==0:
+    for user in list(usuarios.keys()):
+        usuarios[user].append(crear_password())
+        usuarios[user].append(crear_fono(user))
+else:
+    print("Opcion no valida")
+print(usuarios)
+
