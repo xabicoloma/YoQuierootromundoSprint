@@ -36,7 +36,7 @@ def crear_fono(user):
         print("Fono registrado")
         return fono
     else:
-        print("!!Fono es demasiado Corto!!")
+        print("!!EL LARGO DEL FONO DEBE SER DE 8 DIGITOS!!")
         crear_fono(user)
 
 usuarios ={
@@ -69,4 +69,3 @@ iniciosesion()
 print("!!CONTRASEÑAS Y FONOS REGISTRADOS!!")
 print(usuarios)
 print("!!DATOS ALMACENADOS EN BASE DE DATOS!!")
-
