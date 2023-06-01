@@ -28,7 +28,6 @@ def crear_password():
     contrasena = "" .join(extension)
     return contrasena
 
-
 def crear_fono(user):
     print(f"A continuacion debe ingresar un fono para de 8 digitos numericos")
     fono=int(input(f"ingresar fono asignado para {user}: "))
@@ -40,20 +39,34 @@ def crear_fono(user):
         print("!!Fono es demasiado Corto!!")
         crear_fono(user)
 
-
 usuarios ={
 }
 crear_cuenta()
 
-print("Bienvenido al menu de usuarios")
-acceso=int(input("Presione 1 para ver listado de usuarios o presione 0 para generar contraseña e ingresar fono: "))
-if acceso ==1:
-    print(list(usuarios))
-elif acceso ==0:
-    for user in list(usuarios.keys()):
-        usuarios[user].append(crear_password())
-        usuarios[user].append(crear_fono(user))
-else:
-    print("Opcion no valida")
+def iniciosesion():
+    print("!!Bienvenido al menu de usuarios!!\n")
+    acceso=int(input("Presione 1 para ver listado de usuarios o presione 0 para generar contraseña e ingresar fono: "))
+    if acceso ==1:
+        print(list(usuarios))
+        volver_menu()
+    elif acceso ==0:
+        for user in list(usuarios.keys()):
+            usuarios[user].append(crear_password())
+            usuarios[user].append(crear_fono(user))
+    else:
+        print("Opcion no valida")
+        volver_menu()
+
+def volver_menu():
+        print("¿Desea volver al inicio de sesion? ")
+        volver=input("Ingrese 0 para volver al menu de inicio de sesion o cualquier tecla para Finalizar: ")
+        if volver == "0":
+            iniciosesion()
+        else:
+            print("Esperamos verte pronto...")
+
+iniciosesion()
+print("!!CONTRASEÑAS Y FONOS REGISTRADOS!!")
 print(usuarios)
+print("!!DATOS ALMACENADOS EN BASE DE DATOS!!")
 
